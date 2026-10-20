@@ -1,0 +1,7 @@
+target/
+.env
+auth/
+reports/
+*.iml
+.idea/
+.vscode/
