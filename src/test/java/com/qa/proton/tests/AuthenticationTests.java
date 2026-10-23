@@ -47,7 +47,6 @@ class AuthenticationTests extends BaseTest {
         MailboxPage mailbox = new LoginPage(page).loginAs(Config.SENDER);
         mailbox.logout();
         assertThat(page.locator(Locators.LOGIN_USERNAME)).isVisible();
-
         page.goBack();
         assertThat(page.locator(Locators.COMPOSE_BUTTON)).hasCount(0);
         assertThat(page.locator(Locators.LOGIN_USERNAME)).isVisible();

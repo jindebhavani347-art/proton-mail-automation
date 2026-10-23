@@ -1,10 +1,14 @@
 package com.qa.proton.pages;
 
+import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.TimeoutError;
+import com.microsoft.playwright.assertions.LocatorAssertions;
 import com.microsoft.playwright.options.AriaRole;
-
+import com.microsoft.playwright.assertions.LocatorAssertions;
 import java.nio.file.Path;
+import com.microsoft.playwright.TimeoutError;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -54,7 +58,9 @@ public class ComposerPage {
     }
 
     public ComposerPage body(String text) {
-        Locator editor = page.frameLocator(Locators.COMPOSER_BODY_IFRAME).locator("body");
+        Locator editor =  page.getByTestId("rooster-iframe")
+                                   .contentFrame()
+                                   .locator("id=rooster-editor");
         editor.click();
         editor.fill(text);
         return this;
@@ -108,7 +114,19 @@ public class ComposerPage {
     }
 
     public void assertSent() {
-        assertThat(sentToast().first()).isVisible();
         assertThat(composer()).isHidden();
+        assertThat(sentToast().first()).isVisible(
+                new LocatorAssertions.IsVisibleOptions().setTimeout(20000));
+
+    }
+    public void composeclosepopup(){
+        Locator dialog = page.getByLabel("Sending error");
+        try{
+            dialog.waitFor(new Locator.WaitForOptions().setTimeout(2000));
+            dialog.getByRole(AriaRole.BUTTON,new Locator.GetByRoleOptions().setName("Close")).last().click();
+        } catch (TimeoutError e){
+            //no poup
+        }
+
     }
 }

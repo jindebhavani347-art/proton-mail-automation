@@ -30,6 +30,7 @@ public final class Config {
     public static final double TIMEOUT_MS = Double.parseDouble(get("TIMEOUT_MS", "20000"));
     public static final double LOGIN_TIMEOUT_MS = Double.parseDouble(get("LOGIN_TIMEOUT_MS", "120000"));
     public static final long DELIVERY_TIMEOUT_MS = Long.parseLong(get("MAIL_DELIVERY_TIMEOUT_MS", "90000"));
+    public static final double SLOW_MO_MS=Double.parseDouble (get("SLOW_MO_MS",""));
 
     public static final Account SENDER = new Account("sender", get("SENDER_EMAIL", ""), get("SENDER_PASSWORD", ""));
     public static final Account RECEIVER = new Account("receiver", get("RECEIVER_EMAIL", ""), get("RECEIVER_PASSWORD", ""));

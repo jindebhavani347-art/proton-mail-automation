@@ -1,5 +1,8 @@
 package com.qa.proton.pages;
 
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
+
 /**
  * ALL selectors live here. When Proton changes its UI, this is the only file to touch.
  *
@@ -12,7 +15,9 @@ public final class Locators {
 
     // ---------- Login ----------
     public static final String LOGIN_USERNAME = "#username";
+    //public static  final String login_username_lable = page.getByText("Email or username");
     public static final String LOGIN_PASSWORD = "#password";
+    public static  final String logoutpup = "button:has-text('Sign out')";
     public static final String LOGIN_SUBMIT = "button[type='submit']";
     public static final String LOGIN_ERROR = "[role='alert'], .notification--error, .input-element-container .color-danger";
 

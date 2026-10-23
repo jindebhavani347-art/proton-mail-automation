@@ -8,9 +8,7 @@
   <artifactId>proton-mail-automation</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
-    <modules>
-        <module>evidance</module>
-    </modules>
+
     <name>Proton Mail Web - Automation Suite</name>
 
   <properties>
@@ -59,6 +57,7 @@
         <configuration>
           <!-- Shared mailboxes => tests run sequentially by default (see README) -->
           <trimStackTrace>false</trimStackTrace>
+          
         </configuration>
       </plugin>
       <plugin>

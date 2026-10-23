@@ -60,7 +60,7 @@ public class MailboxPage {
 
     public MailboxPage goTo(String folderId) {
         page.locator(Locators.folderLink(folderId)).click();
-        assertThat(page).hasURL(Pattern.compile(".*/(" + urlSegment(folderId) + ").*"));
+        assertThat(page).hasURL(Pattern.compile(".*/(" +folderId + ").*"));
         return this;
     }
 
@@ -181,5 +181,8 @@ public class MailboxPage {
     public void logout() {
         page.locator(Locators.USER_DROPDOWN).click();
         page.locator(Locators.LOGOUT_BUTTON).click();
+        page.getByLabel("Sign out")
+                .getByRole(AriaRole.BUTTON, new Locator.GetByRoleOptions().setName("Sign out"))
+                .click();
     }
 }
